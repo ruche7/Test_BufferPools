@@ -3,8 +3,7 @@
 ## Summary
 
 * Visual Studio 2019 (Version 16.8.4)
-* .NET 5.0
-* Enable nullable option
+* .NET 5.0 Console Application
 * Use [BenchmarkDotNet](https://github.com/dotnet/BenchmarkDotNet)
 
 ## Benchmark methods
