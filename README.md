@@ -3,7 +3,8 @@
 ## Summary
 
 * Visual Studio 2019 (Version 16.8.4)
-* .NET 5.0 Console Application
+* .NET 5.0 (Console application)
+* Enable nullable option
 * Use [BenchmarkDotNet](https://github.com/dotnet/BenchmarkDotNet)
 
 ## Benchmark methods
@@ -17,7 +18,7 @@
 
 ## Benchmark results (on ruche7's PC)
 
-``` ini
+```
 BenchmarkDotNet=v0.12.1, OS=Windows 10.0.19041.746 (2004/?/20H1)
 Intel Core i7-5820K CPU 3.30GHz (Broadwell), 1 CPU, 12 logical and 6 physical cores
 .NET Core SDK=5.0.102
@@ -29,98 +30,66 @@ Intel Core i7-5820K CPU 3.30GHz (Broadwell), 1 CPU, 12 logical and 6 physical co
 
 |                Method |  Length |      Mean |     Error |    StdDev |    Median | Ratio | RatioSD |
 |---------------------- |-------- |----------:|----------:|----------:|----------:|------:|--------:|
-|        ArrayPool_Byte |       0 |  9.006 ns | 0.2180 ns | 0.4200 ns |  8.683 ns |  1.00 |    0.00 |
-|   ArrayPoolScope_Byte |       0 | 10.790 ns | 0.2498 ns | 0.3814 ns | 10.569 ns |  1.20 |    0.07 |
-|       MemoryPool_Byte |       0 | 23.474 ns | 0.4976 ns | 0.8035 ns | 23.856 ns |  2.60 |    0.15 |
+|        ArrayPool_Byte |       0 |  9.603 ns | 0.2242 ns | 0.2303 ns |  9.474 ns |  1.00 |    0.00 |
+|   ArrayPoolScope_Byte |       0 | 12.568 ns | 0.2809 ns | 0.3652 ns | 12.485 ns |  1.30 |    0.05 |
+|       MemoryPool_Byte |       0 | 22.392 ns | 0.2802 ns | 0.2339 ns | 22.344 ns |  2.33 |    0.07 |
 |                       |         |           |           |           |           |       |         |
-|        ArrayPool_Char |       0 |  9.184 ns | 0.0656 ns | 0.0548 ns |  9.158 ns |  1.00 |    0.00 |
-|   ArrayPoolScope_Char |       0 | 10.775 ns | 0.2465 ns | 0.3909 ns | 10.923 ns |  1.17 |    0.05 |
-|       MemoryPool_Char |       0 | 23.680 ns | 0.5034 ns | 0.8948 ns | 23.220 ns |  2.56 |    0.09 |
+|        ArrayPool_Char |       0 |  9.339 ns | 0.2128 ns | 0.2185 ns |  9.327 ns |  1.00 |    0.00 |
+|   ArrayPoolScope_Char |       0 | 12.390 ns | 0.2759 ns | 0.3177 ns | 12.358 ns |  1.32 |    0.03 |
+|       MemoryPool_Char |       0 | 22.563 ns | 0.3506 ns | 0.2737 ns | 22.506 ns |  2.43 |    0.07 |
 |                       |         |           |           |           |           |       |         |
-|         ArrayPool_Int |       0 |  9.246 ns | 0.2255 ns | 0.3767 ns |  9.290 ns |  1.00 |    0.00 |
-|    ArrayPoolScope_Int |       0 | 10.615 ns | 0.2485 ns | 0.4083 ns | 10.820 ns |  1.15 |    0.07 |
-|        MemoryPool_Int |       0 | 22.843 ns | 0.1058 ns | 0.0826 ns | 22.827 ns |  2.42 |    0.10 |
+|         ArrayPool_Int |       0 |  9.799 ns | 0.2257 ns | 0.2509 ns |  9.721 ns |  1.00 |    0.00 |
+|    ArrayPoolScope_Int |       0 | 13.188 ns | 0.1397 ns | 0.1166 ns | 13.142 ns |  1.35 |    0.03 |
+|        MemoryPool_Int |       0 | 22.679 ns | 0.4816 ns | 0.5734 ns | 22.571 ns |  2.31 |    0.08 |
 |                       |         |           |           |           |           |       |         |
-|      ArrayPool_Object |       0 | 39.425 ns | 0.8309 ns | 1.6008 ns | 40.306 ns |  1.00 |    0.00 |
-| ArrayPoolScope_Object |       0 | 41.472 ns | 0.8648 ns | 1.5146 ns | 40.944 ns |  1.05 |    0.05 |
-|     MemoryPool_Object |       0 | 72.865 ns | 1.4939 ns | 2.9489 ns | 70.965 ns |  1.85 |    0.11 |
+|      ArrayPool_Object |       0 | 40.091 ns | 0.8362 ns | 1.1163 ns | 39.372 ns |  1.00 |    0.00 |
+| ArrayPoolScope_Object |       0 | 42.573 ns | 0.8636 ns | 1.1230 ns | 42.173 ns |  1.06 |    0.04 |
+|     MemoryPool_Object |       0 | 69.392 ns | 1.3652 ns | 1.2770 ns | 68.845 ns |  1.74 |    0.05 |
 |                       |         |           |           |           |           |       |         |
-|        ArrayPool_Byte |       1 | 33.191 ns | 0.6926 ns | 1.5347 ns | 32.988 ns |  1.00 |    0.00 |
-|   ArrayPoolScope_Byte |       1 | 30.187 ns | 0.1040 ns | 0.0868 ns | 30.168 ns |  0.92 |    0.04 |
-|       MemoryPool_Byte |       1 | 41.668 ns | 0.8607 ns | 1.3898 ns | 42.300 ns |  1.27 |    0.07 |
+|        ArrayPool_Byte |      10 | 32.616 ns | 0.6576 ns | 1.0618 ns | 32.648 ns |  1.00 |    0.00 |
+|   ArrayPoolScope_Byte |      10 | 33.908 ns | 0.7076 ns | 1.1223 ns | 33.291 ns |  1.04 |    0.05 |
+|       MemoryPool_Byte |      10 | 41.614 ns | 0.8425 ns | 0.9014 ns | 41.051 ns |  1.28 |    0.05 |
 |                       |         |           |           |           |           |       |         |
-|        ArrayPool_Char |       1 | 30.264 ns | 0.6340 ns | 1.2950 ns | 29.364 ns |  1.00 |    0.00 |
-|   ArrayPoolScope_Char |       1 | 30.489 ns | 0.6488 ns | 1.4776 ns | 29.539 ns |  1.01 |    0.07 |
-|       MemoryPool_Char |       1 | 41.981 ns | 0.0832 ns | 0.0779 ns | 41.987 ns |  1.38 |    0.06 |
+|        ArrayPool_Char |      10 | 30.096 ns | 0.6145 ns | 0.5447 ns | 29.826 ns |  1.00 |    0.00 |
+|   ArrayPoolScope_Char |      10 | 32.573 ns | 0.6612 ns | 0.9692 ns | 31.957 ns |  1.08 |    0.04 |
+|       MemoryPool_Char |      10 | 40.318 ns | 0.1289 ns | 0.1006 ns | 40.265 ns |  1.34 |    0.03 |
 |                       |         |           |           |           |           |       |         |
-|         ArrayPool_Int |       1 | 30.574 ns | 0.6430 ns | 1.4381 ns | 29.660 ns |  1.00 |    0.00 |
-|    ArrayPoolScope_Int |       1 | 32.729 ns | 0.1387 ns | 0.1158 ns | 32.702 ns |  1.05 |    0.05 |
-|        MemoryPool_Int |       1 | 42.763 ns | 0.8877 ns | 1.6454 ns | 41.629 ns |  1.41 |    0.08 |
+|         ArrayPool_Int |      10 | 29.709 ns | 0.6182 ns | 1.0328 ns | 29.112 ns |  1.00 |    0.00 |
+|    ArrayPoolScope_Int |      10 | 34.747 ns | 0.5889 ns | 0.4598 ns | 34.743 ns |  1.17 |    0.04 |
+|        MemoryPool_Int |      10 | 39.068 ns | 0.8006 ns | 1.1736 ns | 39.005 ns |  1.31 |    0.07 |
 |                       |         |           |           |           |           |       |         |
-|      ArrayPool_Object |       1 | 56.419 ns | 1.1305 ns | 1.5848 ns | 55.403 ns |  1.00 |    0.00 |
-| ArrayPoolScope_Object |       1 | 57.005 ns | 1.1766 ns | 3.0790 ns | 54.781 ns |  1.03 |    0.06 |
-|     MemoryPool_Object |       1 | 89.716 ns | 1.8227 ns | 3.3329 ns | 87.356 ns |  1.58 |    0.06 |
+|      ArrayPool_Object |      10 | 57.574 ns | 1.1760 ns | 1.2077 ns | 56.621 ns |  1.00 |    0.00 |
+| ArrayPoolScope_Object |      10 | 61.011 ns | 1.2510 ns | 1.6267 ns | 60.809 ns |  1.06 |    0.04 |
+|     MemoryPool_Object |      10 | 87.904 ns | 1.7555 ns | 2.4029 ns | 86.647 ns |  1.53 |    0.06 |
 |                       |         |           |           |           |           |       |         |
-|        ArrayPool_Byte |     100 | 32.523 ns | 0.6806 ns | 1.4650 ns | 31.456 ns |  1.00 |    0.00 |
-|   ArrayPoolScope_Byte |     100 | 30.787 ns | 0.6724 ns | 1.4618 ns | 29.860 ns |  0.95 |    0.06 |
-|       MemoryPool_Byte |     100 | 44.805 ns | 0.9271 ns | 1.5233 ns | 43.871 ns |  1.37 |    0.09 |
+|        ArrayPool_Byte |    1000 | 30.267 ns | 0.6427 ns | 0.9619 ns | 29.716 ns |  1.00 |    0.00 |
+|   ArrayPoolScope_Byte |    1000 | 31.100 ns | 0.5145 ns | 0.6507 ns | 30.839 ns |  1.02 |    0.02 |
+|       MemoryPool_Byte |    1000 | 39.077 ns | 0.5523 ns | 0.4612 ns | 38.897 ns |  1.27 |    0.05 |
 |                       |         |           |           |           |           |       |         |
-|        ArrayPool_Char |     100 | 28.718 ns | 0.6295 ns | 1.2859 ns | 27.892 ns |  1.00 |    0.00 |
-|   ArrayPoolScope_Char |     100 | 31.276 ns | 0.6696 ns | 1.4838 ns | 30.327 ns |  1.09 |    0.08 |
-|       MemoryPool_Char |     100 | 41.839 ns | 0.8789 ns | 1.6507 ns | 40.648 ns |  1.45 |    0.09 |
+|        ArrayPool_Char |    1000 | 28.595 ns | 0.2529 ns | 0.1974 ns | 28.577 ns |  1.00 |    0.00 |
+|   ArrayPoolScope_Char |    1000 | 31.874 ns | 0.6706 ns | 1.0637 ns | 31.295 ns |  1.14 |    0.04 |
+|       MemoryPool_Char |    1000 | 40.375 ns | 0.5514 ns | 0.5157 ns | 40.111 ns |  1.41 |    0.02 |
 |                       |         |           |           |           |           |       |         |
-|         ArrayPool_Int |     100 | 28.133 ns | 0.0713 ns | 0.0557 ns | 28.140 ns |  1.00 |    0.00 |
-|    ArrayPoolScope_Int |     100 | 29.015 ns | 0.5089 ns | 0.4249 ns | 28.756 ns |  1.03 |    0.02 |
-|        MemoryPool_Int |     100 | 45.341 ns | 0.9447 ns | 1.5521 ns | 44.514 ns |  1.62 |    0.06 |
+|         ArrayPool_Int |    1000 | 37.328 ns | 0.7755 ns | 1.2957 ns | 36.847 ns |  1.00 |    0.00 |
+|    ArrayPoolScope_Int |    1000 | 31.608 ns | 0.6680 ns | 1.0201 ns | 31.053 ns |  0.84 |    0.04 |
+|        MemoryPool_Int |    1000 | 38.742 ns | 0.7741 ns | 0.6863 ns | 38.387 ns |  1.04 |    0.04 |
 |                       |         |           |           |           |           |       |         |
-|      ArrayPool_Object |     100 | 51.955 ns | 1.0586 ns | 1.5845 ns | 51.128 ns |  1.00 |    0.00 |
-| ArrayPoolScope_Object |     100 | 61.888 ns | 1.2620 ns | 2.9249 ns | 60.028 ns |  1.20 |    0.07 |
-|     MemoryPool_Object |     100 | 87.801 ns | 1.7897 ns | 3.3615 ns | 85.221 ns |  1.70 |    0.08 |
+|      ArrayPool_Object |    1000 | 52.707 ns | 1.0543 ns | 0.9862 ns | 52.080 ns |  1.00 |    0.00 |
+| ArrayPoolScope_Object |    1000 | 55.582 ns | 0.0760 ns | 0.0635 ns | 55.594 ns |  1.05 |    0.02 |
+|     MemoryPool_Object |    1000 | 85.910 ns | 1.7595 ns | 2.3489 ns | 85.808 ns |  1.64 |    0.06 |
 |                       |         |           |           |           |           |       |         |
-|        ArrayPool_Byte |    1000 | 34.655 ns | 0.7235 ns | 1.7883 ns | 33.616 ns |  1.00 |    0.00 |
-|   ArrayPoolScope_Byte |    1000 | 37.775 ns | 0.7788 ns | 1.9105 ns | 36.918 ns |  1.09 |    0.08 |
-|       MemoryPool_Byte |    1000 | 42.403 ns | 0.7748 ns | 1.2731 ns | 41.901 ns |  1.22 |    0.08 |
+|        ArrayPool_Byte | 1000000 | 30.197 ns | 0.6221 ns | 1.0896 ns | 29.616 ns |  1.00 |    0.00 |
+|   ArrayPoolScope_Byte | 1000000 | 31.085 ns | 0.1332 ns | 0.1040 ns | 31.086 ns |  1.03 |    0.03 |
+|       MemoryPool_Byte | 1000000 | 44.701 ns | 0.7641 ns | 0.6381 ns | 44.372 ns |  1.49 |    0.05 |
 |                       |         |           |           |           |           |       |         |
-|        ArrayPool_Char |    1000 | 31.656 ns | 0.6639 ns | 1.4291 ns | 31.777 ns |  1.00 |    0.00 |
-|   ArrayPoolScope_Char |    1000 | 31.165 ns | 0.6611 ns | 1.6948 ns | 30.054 ns |  0.98 |    0.06 |
-|       MemoryPool_Char |    1000 | 41.487 ns | 0.1775 ns | 0.1744 ns | 41.502 ns |  1.34 |    0.06 |
+|        ArrayPool_Char | 1000000 | 30.531 ns | 0.6138 ns | 0.8803 ns | 30.114 ns |  1.00 |    0.00 |
+|   ArrayPoolScope_Char | 1000000 | 31.889 ns | 0.2061 ns | 0.1721 ns | 31.936 ns |  1.04 |    0.04 |
+|       MemoryPool_Char | 1000000 | 41.762 ns | 0.7557 ns | 0.6699 ns | 41.434 ns |  1.36 |    0.05 |
 |                       |         |           |           |           |           |       |         |
-|         ArrayPool_Int |    1000 | 29.525 ns | 0.6329 ns | 1.2929 ns | 28.794 ns |  1.00 |    0.00 |
-|    ArrayPoolScope_Int |    1000 | 31.243 ns | 0.6665 ns | 1.4629 ns | 30.682 ns |  1.06 |    0.06 |
-|        MemoryPool_Int |    1000 | 39.527 ns | 0.8264 ns | 1.5921 ns | 38.474 ns |  1.34 |    0.07 |
+|         ArrayPool_Int | 1000000 | 29.935 ns | 0.5880 ns | 0.5212 ns | 29.694 ns |  1.00 |    0.00 |
+|    ArrayPoolScope_Int | 1000000 | 32.004 ns | 0.1940 ns | 0.1515 ns | 31.982 ns |  1.07 |    0.02 |
+|        MemoryPool_Int | 1000000 | 45.195 ns | 0.9122 ns | 1.1536 ns | 44.820 ns |  1.52 |    0.05 |
 |                       |         |           |           |           |           |       |         |
-|      ArrayPool_Object |    1000 | 51.070 ns | 0.2303 ns | 0.1798 ns | 50.992 ns |  1.00 |    0.00 |
-| ArrayPoolScope_Object |    1000 | 56.206 ns | 1.1469 ns | 1.5698 ns | 55.016 ns |  1.10 |    0.03 |
-|     MemoryPool_Object |    1000 | 86.696 ns | 0.2040 ns | 0.1704 ns | 86.603 ns |  1.70 |    0.01 |
-|                       |         |           |           |           |           |       |         |
-|        ArrayPool_Byte |   10000 | 29.376 ns | 0.4896 ns | 0.4808 ns | 29.203 ns |  1.00 |    0.00 |
-|   ArrayPoolScope_Byte |   10000 | 31.202 ns | 0.6619 ns | 1.5731 ns | 30.176 ns |  1.06 |    0.04 |
-|       MemoryPool_Byte |   10000 | 42.916 ns | 0.8768 ns | 1.4888 ns | 41.775 ns |  1.47 |    0.06 |
-|                       |         |           |           |           |           |       |         |
-|        ArrayPool_Char |   10000 | 32.642 ns | 0.6838 ns | 1.3969 ns | 31.752 ns |  1.00 |    0.00 |
-|   ArrayPoolScope_Char |   10000 | 30.400 ns | 0.6498 ns | 1.4930 ns | 29.409 ns |  0.93 |    0.05 |
-|       MemoryPool_Char |   10000 | 41.462 ns | 0.0929 ns | 0.0776 ns | 41.435 ns |  1.27 |    0.05 |
-|                       |         |           |           |           |           |       |         |
-|         ArrayPool_Int |   10000 | 32.310 ns | 0.6932 ns | 1.3520 ns | 31.505 ns |  1.00 |    0.00 |
-|    ArrayPoolScope_Int |   10000 | 31.539 ns | 0.6670 ns | 1.4918 ns | 30.587 ns |  0.98 |    0.06 |
-|        MemoryPool_Int |   10000 | 40.433 ns | 0.8492 ns | 1.4648 ns | 39.489 ns |  1.25 |    0.07 |
-|                       |         |           |           |           |           |       |         |
-|      ArrayPool_Object |   10000 | 51.924 ns | 1.0574 ns | 1.5499 ns | 53.169 ns |  1.00 |    0.00 |
-| ArrayPoolScope_Object |   10000 | 64.640 ns | 1.3260 ns | 3.0200 ns | 62.680 ns |  1.25 |    0.07 |
-|     MemoryPool_Object |   10000 | 93.582 ns | 1.8862 ns | 3.5427 ns | 91.311 ns |  1.81 |    0.11 |
-|                       |         |           |           |           |           |       |         |
-|        ArrayPool_Byte | 1000000 | 30.404 ns | 0.6564 ns | 1.5978 ns | 29.503 ns |  1.00 |    0.00 |
-|   ArrayPoolScope_Byte | 1000000 | 31.188 ns | 0.6653 ns | 1.4463 ns | 30.419 ns |  1.03 |    0.07 |
-|       MemoryPool_Byte | 1000000 | 43.430 ns | 0.9006 ns | 1.5773 ns | 42.458 ns |  1.43 |    0.10 |
-|                       |         |           |           |           |           |       |         |
-|        ArrayPool_Char | 1000000 | 29.711 ns | 0.6562 ns | 1.4945 ns | 28.688 ns |  1.00 |    0.00 |
-|   ArrayPoolScope_Char | 1000000 | 31.768 ns | 0.6620 ns | 1.3819 ns | 30.948 ns |  1.07 |    0.08 |
-|       MemoryPool_Char | 1000000 | 50.160 ns | 1.0251 ns | 1.7407 ns | 49.053 ns |  1.69 |    0.10 |
-|                       |         |           |           |           |           |       |         |
-|         ArrayPool_Int | 1000000 | 28.506 ns | 0.1625 ns | 0.1269 ns | 28.452 ns |  1.00 |    0.00 |
-|    ArrayPoolScope_Int | 1000000 | 31.479 ns | 0.1270 ns | 0.0991 ns | 31.499 ns |  1.10 |    0.00 |
-|        MemoryPool_Int | 1000000 | 42.118 ns | 0.8840 ns | 1.7450 ns | 41.429 ns |  1.48 |    0.06 |
-|                       |         |           |           |           |           |       |         |
-|      ArrayPool_Object | 1000000 | 57.085 ns | 0.5214 ns | 0.4071 ns | 56.962 ns |  1.00 |    0.00 |
-| ArrayPoolScope_Object | 1000000 | 54.280 ns | 0.4518 ns | 0.3527 ns | 54.206 ns |  0.95 |    0.01 |
-|     MemoryPool_Object | 1000000 | 90.560 ns | 0.5477 ns | 0.4276 ns | 90.433 ns |  1.59 |    0.01 |
+|      ArrayPool_Object | 1000000 | 53.849 ns | 0.1147 ns | 0.1017 ns | 53.810 ns |  1.00 |    0.00 |
+| ArrayPoolScope_Object | 1000000 | 54.830 ns | 0.2777 ns | 0.2319 ns | 54.820 ns |  1.02 |    0.01 |
+|     MemoryPool_Object | 1000000 | 93.586 ns | 0.7573 ns | 0.6714 ns | 93.212 ns |  1.74 |    0.01 |
